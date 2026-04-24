@@ -237,6 +237,7 @@
 
     let board, piece, nextSpawn, running = false, paused = false, score = 0, lines = 0;
     let lastTime = 0, dropCounter = 0, dropInterval = 783;
+    let spawnSide = 0;
 
     function resizeCanvas() {
       const area = document.getElementById('game-area');
@@ -257,11 +258,10 @@
       const type = PIECES[Math.floor(Math.random() * PIECES.length)];
       const shape = SHAPES[type];
       const matrix = shape.matrix.map(r => r.slice());
-      return {
-        matrix,
-        x: Math.floor((COLS - matrix[0].length) / 2),
-        y: 0,
-      };
+      const width = matrix[0].length;
+      const x = spawnSide === 0 ? COLS - width : 0;
+      spawnSide = 1 - spawnSide;
+      return { matrix, x, y: 0 };
     }
 
     function collides(p) {
@@ -423,6 +423,7 @@
 
     function start() {
       board = createBoard();
+      spawnSide = 0;
       piece = randomPiece();
       score = 0;
       lines = 0;
