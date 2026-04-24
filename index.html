@@ -65,13 +65,17 @@
       background: transparent;
       border: 1px solid rgba(245, 241, 234, 0.25);
       color: #f5f1ea;
-      padding: 8px 18px;
-      border-radius: 4px;
+      padding: 14px 32px;
+      border-radius: 6px;
       font-family: inherit;
-      font-size: 14px;
+      font-size: 20px;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.15s;
+    }
+    #start-btn {
+      font-size: 24px;
+      padding: 18px 44px;
     }
     .btn:hover { background: rgba(245, 241, 234, 0.08); }
     .btn:active { transform: scale(0.97); }
@@ -158,7 +162,8 @@
       header { padding: 8px 12px; }
       .score-value { font-size: 17px; }
       .score-wrap { gap: 14px; }
-      .btn { padding: 6px 12px; font-size: 13px; }
+      .btn { padding: 10px 20px; font-size: 16px; }
+      #start-btn { font-size: 20px; padding: 14px 32px; }
     }
     @media (hover: none) and (pointer: coarse) {
       .touch-controls { display: flex; }
@@ -231,7 +236,7 @@
     let cellSize = 40;
 
     let board, piece, nextSpawn, running = false, paused = false, score = 0, lines = 0;
-    let lastTime = 0, dropCounter = 0, dropInterval = 900;
+    let lastTime = 0, dropCounter = 0, dropInterval = 783;
 
     function resizeCanvas() {
       const area = document.getElementById('game-area');
@@ -421,7 +426,7 @@
       piece = randomPiece();
       score = 0;
       lines = 0;
-      dropInterval = 900;
+      dropInterval = 783;
       dropCounter = 0;
       lastTime = 0;
       document.getElementById('score').textContent = 0;
